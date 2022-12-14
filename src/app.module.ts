@@ -3,10 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { QuestionModule } from './questions/questions.module';
+
 import { Questions } from './entities/Questions';
 import { Surveys } from './entities/Surveys';
+import { Responses } from './entities/Responses'
+
+import { QuestionModule } from './questions/questions.module';
 import { SurveyModule } from './surveys/surveys.module';
+import { ResponseModule } from './responses/responses.module'
 
 @Module({
   imports: [
@@ -22,7 +26,7 @@ import { SurveyModule } from './surveys/surveys.module';
         entities: [
           Questions,
           Surveys,
-
+          Responses
         ],
         extra: {
           charset: 'utf8mb4_general_ci',
@@ -32,7 +36,7 @@ import { SurveyModule } from './surveys/surveys.module';
     ),
     QuestionModule,
     SurveyModule,
-
+    ResponseModule
   ],
   controllers: [AppController],
   providers: [AppService],

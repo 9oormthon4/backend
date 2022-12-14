@@ -26,7 +26,7 @@ export class Questions {
 
     @ApiProperty({ example: '하늘' })
     @Column('varchar', { name: 'question_type', length: 200 })
-    question_type: string;
+    questionType: string;
 
     @ApiProperty({ example: '옵션1' })
     @Column('varchar', { name: 'option_one', length: 200 })

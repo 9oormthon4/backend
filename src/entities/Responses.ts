@@ -10,19 +10,23 @@ import {
 
 import { ApiProperty } from '@nestjs/swagger';
 
-@Entity('surveys', { schema: 'adregamdy' })
-export class Surveys {
+@Entity('responses', { schema: 'adregamdy' })
+export class Responses {
     @ApiProperty({ example: 3 })
-    @PrimaryGeneratedColumn({ type: 'int', name: 'user_id' })
+    @PrimaryGeneratedColumn({ type: 'int', name: 'response_id' })
+    responseId: number;
+
+    @ApiProperty({ example: 1 })
+    @Column({type: 'int', name: 'user_id'})
     userId: number;
 
-    @ApiProperty({ example: '렌터카 빌렸나요' })
-    @Column('varchar', { name: 'user_nickname', length: 200 })
-    userNickname: string;
+    @ApiProperty({ example: 1 })
+    @Column({type: 'int', name: 'question_id'})
+    questionId: number;
 
-    @ApiProperty({ example: 'https~' })
-    @Column('varchar', { name: 'user_code', length: 200 })
-    userCode: string;
+    @ApiProperty({ example: 1 })
+    @Column({type: 'int', name: 'answer_to_question'})
+    answerToQuestion: number;
 
     @ApiProperty({ example: '2000-00-00T00:00:00.000Z' })
     @Column('datetime', {
