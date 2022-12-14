@@ -5,6 +5,10 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors({
+    origin: true,
+  });
+
   const config = new DocumentBuilder()
     .setTitle('Adregamdy example')
     .setDescription('The Adregamdy API description')

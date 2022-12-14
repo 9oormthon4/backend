@@ -5,6 +5,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { QuestionModule } from './questions/questions.module';
 import { Questions } from './entities/Questions';
+import { Surveys } from './entities/Surveys';
+import { SurveyModule } from './surveys/surveys.module';
 
 @Module({
   imports: [
@@ -12,19 +14,25 @@ import { Questions } from './entities/Questions';
     TypeOrmModule.forRoot(
       {
         type: 'mysql',
-        host: '3.37.71.138',
+        host: '13.124.66.200',
         username: 'root',
         password: 'messi10goat',
-        port: 51838,
+        port: 52320,
         database: 'adregamdy',
-        entities: [Questions],
+        entities: [
+          Questions,
+          Surveys,
+
+        ],
         extra: {
           charset: 'utf8mb4_general_ci',
         },
         synchronize: true,
       }
     ),
-    QuestionModule
+    QuestionModule,
+    SurveyModule,
+
   ],
   controllers: [AppController],
   providers: [AppService],
