@@ -17,13 +17,10 @@ async function bootstrap() {
   }));
   
   app.enableCors({
-    /*
-    origin: '*',
-    allowedHeaders: '*',
-    */
     methods: 'GET, PATCH, POST',
     origin: true,
     credentials: true,
+    allowedHeaders: '*'
   });
 
   const config = new DocumentBuilder()
