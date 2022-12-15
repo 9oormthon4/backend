@@ -6,13 +6,13 @@ import { HttpExceptionFilter } from './error/filter'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors({
-    origin: true,
-  });
-
   app.useGlobalFilters(
     HttpExceptionFilter(false)
   );
+
+  app.enableCors({
+    origin: true
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Adregamdy example')
