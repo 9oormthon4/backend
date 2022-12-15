@@ -28,7 +28,7 @@ export class SurveyService {
   async getParticipantCount(): Promise<ParticipantResponse> {
     return {
         totalParticipantCount: await this.surveyRepository.createQueryBuilder('surveys')
-            .where('surveys.deletedAt is not null')
+            .where('surveys.deletedAt is null')
             .getCount()
     }
   }
