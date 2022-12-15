@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator'
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator'
 
 export class AddNicknameDTO {
     @IsString()
@@ -7,7 +7,7 @@ export class AddNicknameDTO {
     @ApiProperty({ example: 'aldkfadfX' })
     userCode: string
 
-    @IsString()
+    @IsNumber()
     @IsNotEmpty()
     @ApiProperty({ example: 'Tom' })
     nickname: string
