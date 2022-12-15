@@ -77,7 +77,7 @@ export class SurveyService {
     const oceanPollution = this._pollutionScorer(responses[7], daysTraveled)
     const economicCost = skyPollution+landPollution+oceanPollution
 
-    const A = Math.round(economicCost/MAX_ECONOMIC_COST * 20)
+    const A = Math.round((economicCost-2500)/(MAX_ECONOMIC_COST-2500) * 20 / daysTraveled)
     const B = responses.slice(3, 8).reduce((acc, cur) => acc + cur.answerToQuestion, 0)
     const greenScore = B*4+20-A
 
