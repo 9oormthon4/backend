@@ -19,9 +19,6 @@ export class ResponseController {
     @AdregamdyAuth() _: AdregamdyAuthResponse,
     @Body() submissionDTO//: CreateSubmissionDTO
   ): Promise<SuccessResponse> {
-
-    console.log(submissionDTO)
-
     return this.responseService.createSubmission(
         submissionDTO
     )
