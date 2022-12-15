@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Query, Post } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger'
 import { ResponseService } from './responses.service'
 
@@ -26,5 +26,18 @@ export class ResponseController {
         submissionDTO
     )
   }
+    
+  @Get()
+  @ApiOperation({ summary: 'Submit responses by list' })
+  @ApiResponse({ type: SuccessResponse })
+  createSubmission2(
+    @AdregamdyAuth() _: AdregamdyAuthResponse,
+    @Query('json') json
+  ): Promise<SuccessResponse> {
+    return this.responseService.createSubmission(
+        JSON.parse(json)
+    )
+  }
+
 
 }
