@@ -17,7 +17,8 @@ async function bootstrap() {
   }));
   
   app.enableCors({
-    origin: true
+    origin: true,
+    allowedHeaders: '*'
   });
 
   const config = new DocumentBuilder()

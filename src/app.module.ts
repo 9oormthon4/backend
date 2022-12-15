@@ -15,6 +15,9 @@ import { ResponseModule } from './responses/responses.module'
 @Module({
   imports: [
 
+
+    // dotenv 적용이 안됨...ㅠㅠ
+
     TypeOrmModule.forRoot(
       {
         type: 'mysql',
