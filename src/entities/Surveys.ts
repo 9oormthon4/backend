@@ -17,7 +17,7 @@ export class Surveys {
     userId: number;
 
     @ApiProperty({ example: '렌터카 빌렸나요' })
-    @Column('varchar', { name: 'user_nickname', length: 200 })
+    @Column('varchar', { name: 'user_nickname', length: 200, nullable: true })
     userNickname: string | null;
 
     @ApiProperty({ example: 'https~' })
