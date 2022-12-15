@@ -27,11 +27,11 @@ export class ResponseService {
     
         await Promise.all(submissionDTO.responses.map(async s => {
     
-            const check = this.responseRepository.createQueryBuilder('responses')
+            const check = await this.responseRepository.createQueryBuilder('responses')
                 .where('responses.userId = :userId', { userId: s.userId })
                 .andWhere('responses.questionId = :questionId', { questionId: s.questionId })
                 .getOne()
-            
+
             if(check) {
                 throw new AdregamdyException({
                     statusCode: 400,
@@ -43,13 +43,16 @@ export class ResponseService {
                 this.responseRepository.create(s)
             )
 
-            return {
-                status: true
-            }
+
         }))
+
+        return {
+            status: true
+        }
+
     } catch(e) {
         return {
-            status: false
+            status: e
         }
     }
 
