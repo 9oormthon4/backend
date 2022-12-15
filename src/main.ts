@@ -18,7 +18,7 @@ async function bootstrap() {
   
   app.enableCors({
     methods: 'GET, PATCH, POST',
-    origin: true,
+    origin: ["https://adregamdy.vercel.app", "http://localhost:3000", "*/*"],
     credentials: true,
     allowedHeaders: '*'
   });
