@@ -67,7 +67,7 @@ export class SurveyService {
 
     const responses = await this.responseRepository.createQueryBuilder('responses')
         .where('responses.userId = :userId', { userId })
-        .orderBy('response.questionId', 'ASC')
+        .orderBy('responses.questionId', 'ASC')
         .getMany()
 
     const daysTraveled: number = dayConversion[responses[0].answerToQuestion]
@@ -92,7 +92,7 @@ export class SurveyService {
     })
 
     const rank = (await this.surveyRepository.createQueryBuilder('surveys')
-        .where('surveys.greenScore >= :greenScore && surveys.createdAt > :createdAt', { createdAt: now.createdAt })
+        .where('surveys.greenScore >= :greenScore && surveys.createdAt > :createdAt', { greenScore, createdAt: now.createdAt })
         .getCount()) + 1
 
     return {
