@@ -31,7 +31,7 @@ import { ResponseModule } from './responses/responses.module'
         extra: {
           charset: 'utf8mb4_general_ci',
         },
-        synchronize: true,
+        synchronize: false,
       }
     ),
     QuestionModule,
