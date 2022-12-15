@@ -21,6 +21,9 @@ async function bootstrap() {
     origin: '*',
     allowedHeaders: '*',
     */
+    methods: 'GET, PATCH, POST',
+    origin: true,
+    credentials: true,
   });
 
   const config = new DocumentBuilder()
