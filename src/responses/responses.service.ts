@@ -16,7 +16,7 @@ export class ResponseService {
   async createSubmission(
     submissionDTO: CreateSubmissionDTO
   ): Promise<SuccessResponse> {
-
+        
     if(submissionDTO?.responses?.length != 8) {
         throw new AdregamdyException({
             statusCode: 400,

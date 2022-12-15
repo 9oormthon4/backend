@@ -7,21 +7,15 @@ import { HttpExceptionFilter } from './error/filter'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {cors: true});
 
+  app.enableCors()
+
   app.useGlobalFilters(
     HttpExceptionFilter(false)
   );
 
-
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
   }));
-  
-  app.enableCors({
-    methods: 'GET, PATCH, POST',
-    origin: ["https://adregamdy.vercel.app", "http://localhost:3000", "*/*"],
-    credentials: true,
-    allowedHeaders: '*'
-  });
 
   const config = new DocumentBuilder()
     .setTitle('Adregamdy example')

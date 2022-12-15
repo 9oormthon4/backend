@@ -21,10 +21,10 @@ import { ResponseModule } from './responses/responses.module'
     TypeOrmModule.forRoot(
       {
         type: 'mysql',
-        host: '13.124.66.200',
+        host: '3.34.62.141',
         username: 'root',
         password: 'messi10goat',
-        port: 52320,
+        port: 51588,
         database: 'adregamdy',
         entities: [
           Questions,

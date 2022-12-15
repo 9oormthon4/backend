@@ -2,18 +2,18 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsNotEmpty } from 'class-validator';
 
 export class ResponseDTO {
-    @IsNumber()
-    @IsNotEmpty()
+    //@IsNumber()
+    //@IsNotEmpty()
     @ApiProperty({ example: 1 })
     userId: number;
 
-    @IsNumber()
-    @IsNotEmpty()
+    //@IsNumber()
+    //@IsNotEmpty()
     @ApiProperty({ example: 1 })
     questionId: number;
 
-    @IsNumber()
-    @IsNotEmpty()
+    //@IsNumber()
+    //@IsNotEmpty()
     @ApiProperty({ example: 1 })
     answerToQuestion: number;
 }

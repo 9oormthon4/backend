@@ -11,13 +11,17 @@ import { AdregamdyAuth, AdregamdyAuthResponse } from 'src/auth';
 export class ResponseController {
   constructor(private readonly responseService: ResponseService) {}
 
+  
   @Post()
   @ApiOperation({ summary: 'Submit responses by list' })
   @ApiResponse({ type: SuccessResponse })
   createSubmission(
     @AdregamdyAuth() _: AdregamdyAuthResponse,
-    @Body() submissionDTO: CreateSubmissionDTO
+    @Body() submissionDTO//: CreateSubmissionDTO
   ): Promise<SuccessResponse> {
+
+    console.log(submissionDTO)
+
     return this.responseService.createSubmission(
         submissionDTO
     )
