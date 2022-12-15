@@ -79,7 +79,7 @@ export class SurveyService {
 
     const A = Math.round(economicCost/MAX_ECONOMIC_COST * 20)
     const B = responses.slice(3, 8).reduce((acc, cur) => acc + cur.answerToQuestion, 0)
-    const greenScore = A+B-20
+    const greenScore = A+B*4-20
 
     const now = await this.surveyRepository.createQueryBuilder('surveys')
         .where('surveys.userId = :userId', { userId })
