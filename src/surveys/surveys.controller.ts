@@ -4,6 +4,7 @@ import { SurveyService } from './surveys.service'
 import { ParticipantResponse, SubmissionInfoResponse, ScoreResponse, PlantResponse } from './surveys.response'
 import { AddNicknameDTO } from './surveys.dto'
 import { Surveys } from 'src/entities/Surveys';
+import { AdregamdyAuth, AdregamdyAuthResponse } from 'src/auth';
 
 @ApiTags('Surveys')
 @Controller('/surveys')
@@ -13,14 +14,18 @@ export class SurveyController {
   @Get('/participant-count')
   @ApiOperation({ summary: 'Get total question count' })
   @ApiResponse({ type: ParticipantResponse })
-  getParticipantCount(): Promise<ParticipantResponse> {
+  getParticipantCount(
+    @AdregamdyAuth() _: AdregamdyAuthResponse,
+  ): Promise<ParticipantResponse> {
     return this.surveyService.getParticipantCount();
   }
 
   @Get('/request-id')
   @ApiOperation({ summary: 'Get user id for subsequent submission process' })
   @ApiResponse({ type: SubmissionInfoResponse })
-  requestSubmission(): Promise<SubmissionInfoResponse> {
+  requestSubmission(
+    @AdregamdyAuth() _: AdregamdyAuthResponse,
+  ): Promise<SubmissionInfoResponse> {
     return this.surveyService.requestSubmission();
   }
 
@@ -28,6 +33,7 @@ export class SurveyController {
   @ApiOperation({ summary: 'Add user nickname once survey is done' })
   @ApiResponse({ type: Surveys })
   addNickname(
+    @AdregamdyAuth() _: AdregamdyAuthResponse,
     @Body() nicknameDTO: AddNicknameDTO
   ): Promise<Surveys> {
     return this.surveyService.addNickname(
@@ -40,6 +46,7 @@ export class SurveyController {
   @ApiParam({ name: 'userId', required: true, description: 'user id' })
   @ApiResponse({ type: ScoreResponse })
   getScore(
+    @AdregamdyAuth() _: AdregamdyAuthResponse,
     @Param('userId') userId: number
   ): Promise<ScoreResponse> {
     return this.surveyService.getScore(
@@ -52,6 +59,7 @@ export class SurveyController {
   @ApiParam({required: true, type: String, name: 'userId' })
   @ApiResponse({ type: Surveys })
   plantTree(
+    @AdregamdyAuth() _: AdregamdyAuthResponse,
     @Param() userId: number
   ): Promise<Surveys> {
     return this.surveyService.plantTree(
@@ -62,7 +70,9 @@ export class SurveyController {
   @Get('/plant-count')
   @ApiOperation({ summary: 'Get total plant count' })
   @ApiResponse({ type: PlantResponse })
-  getPlant(): Promise<PlantResponse> {
+  getPlant(
+    @AdregamdyAuth() _: AdregamdyAuthResponse,
+  ): Promise<PlantResponse> {
     return this.surveyService.getPlant();
   }
 

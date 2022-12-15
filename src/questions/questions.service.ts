@@ -20,7 +20,6 @@ export class QuestionService {
   }
 
   async getQuestionList(): Promise<QuestionListResponse> {
-    
     const [ questions, totalQuestionCount ] = await this.questionRepository.createQueryBuilder('questions')
       .groupBy('questions.question_id')
       .getManyAndCount()
