@@ -75,9 +75,11 @@ export class SurveyService {
     const skyPollution = this._pollutionScorer(responses[1], daysTraveled)
     const landPollution = this._pollutionScorer(responses[2], daysTraveled)
     const oceanPollution = this._pollutionScorer(responses[7], daysTraveled)
-    const economicCost = skyPollution+landPollution+oceanPollution
 
-    const A = Math.round((economicCost-2500)/(MAX_ECONOMIC_COST-2500) * 20 / daysTraveled)
+    const economicCost = skyPollution+landPollution+oceanPollution
+    const dailyCost = weightMap[2][responses[1].answerToQuestion] + weightMap[3][responses[2].answerToQuestion] + weightMap[8][responses[7].answerToQuestion]
+
+    const A = Math.round((dailyCost-2500)/(MAX_ECONOMIC_COST-2500) * 20)
     const B = responses.slice(3, 8).reduce((acc, cur) => acc + cur.answerToQuestion, 0)
     const greenScore = B*4+20-A
 
