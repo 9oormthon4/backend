@@ -12,17 +12,19 @@ import { QuestionModule } from './questions/questions.module';
 import { SurveyModule } from './surveys/surveys.module';
 import { ResponseModule } from './responses/responses.module'
 
+require('dotenv').config()
+
 @Module({
   imports: [
 
     TypeOrmModule.forRoot(
       {
         type: 'mysql',
-        host: '13.124.66.200',
-        username: 'root',
-        password: 'messi10goat',
-        port: 52320,
-        database: 'adregamdy',
+        host: process.env.HOST,
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD,
+        port: parseInt(process.env.PORT),
+        database: process.env.DATABASE,
         entities: [
           Questions,
           Surveys,
