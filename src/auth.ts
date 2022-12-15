@@ -1,6 +1,5 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { AdregamdyException } from './error/exception';
-require('dotenv').config()
 
 export type AdregamdyAuthResponse = {
     status: boolean
@@ -11,8 +10,7 @@ const Auth = createParamDecorator(
         try {
             const request = ctx.switchToHttp().getRequest();
             const { id, password, userid, usercode } = request.headers;
-
-            if(id == process.env.AUTH_ID && password == process.env.AUTH_PASSWORD) {
+            if(id == "jeju" && password == "pwd") {
                 return {
                     status: true
                 } as AdregamdyAuthResponse
