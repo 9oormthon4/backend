@@ -40,6 +40,9 @@ export class ScoreResponse {
     greenScore: number
 
     @ApiProperty({ example: 10 })
+    greenScorePercentile: number
+
+    @ApiProperty({ example: 10 })
     greenScoreRank: number
 
     @ApiProperty({ type: EconomicCategory })

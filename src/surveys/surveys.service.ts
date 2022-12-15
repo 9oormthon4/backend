@@ -83,8 +83,6 @@ export class SurveyService {
     const B = responses.slice(3, 8).reduce((acc, cur) => acc + cur.answerToQuestion, 0)
     const greenScore = B*4+20-A
 
-    console.log(A, B, dailyCost)
-
     const now = await this.surveyRepository.createQueryBuilder('surveys')
         .where('surveys.userId = :userId', { userId })
         .getOne()
@@ -118,7 +116,8 @@ export class SurveyService {
             }
         },
         greenScore: greenScore,
-        greenScoreRank: rank
+        greenScoreRank: rank,
+        greenScorePercentile: (rank / (await this.getParticipantCount()).totalParticipantCount) * 100
     }
   }
 
@@ -139,7 +138,7 @@ export class SurveyService {
     let comment = ""
     if(target == "sky") {
        comment = [2,3,4].includes(responses[1].answerToQuestion) ? commentary[`${target}Good`] : commentary[`${target}Bad`]
-    } else if(target = "land") {
+    } else if(target == "land") {
        comment = [3,4].includes(responses[7].answerToQuestion) ? commentary[`${target}Good`] : commentary[`${target}Bad`]
     } else {
        comment = [3,4].includes(responses[6].answerToQuestion) ? commentary[`${target}Good`] : commentary[`${target}Bad`]
