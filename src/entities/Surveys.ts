@@ -17,7 +17,7 @@ export class Surveys {
     userId: number;
 
     @ApiProperty({ example: '렌터카 빌렸나요' })
-    @Column('varchar', { name: 'user_nickname', length: 200, nullable: true, default: () => null })
+    @Column('varchar', { name: 'user_nickname', length: 200, nullable: true, default: null })
     userNickname: string | null;
 
     @ApiProperty({ example: 'https~' })
@@ -49,4 +49,8 @@ export class Surveys {
     @ApiProperty({ example: 1 })
     @Column({type: 'int', name: 'green_score'})
     greenScore: number | null;
+
+    @ApiProperty({ example: 3 })
+    @Column({ type: 'int', name: 'is_planting' })
+    isPlanting: number | null;
 }

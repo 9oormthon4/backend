@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger'
 import { SurveyService } from './surveys.service'
-import { ParticipantResponse, SubmissionInfoResponse, ScoreResponse } from './surveys.response'
+import { ParticipantResponse, SubmissionInfoResponse, ScoreResponse, PlantResponse } from './surveys.response'
 import { AddNicknameDTO } from './surveys.dto'
 import { Surveys } from 'src/entities/Surveys';
 
@@ -45,6 +45,25 @@ export class SurveyController {
     return this.surveyService.getScore(
         userId
     );
+  }
+
+  @Patch('/plant/:userId')
+  @ApiOperation({ summary: 'Plant tree' })
+  @ApiParam({required: true, type: String, name: 'userId' })
+  @ApiResponse({ type: Surveys })
+  plantTree(
+    @Param() userId: number
+  ): Promise<Surveys> {
+    return this.surveyService.plantTree(
+        userId
+    )
+  }
+
+  @Get('/plant-count')
+  @ApiOperation({ summary: 'Get total plant count' })
+  @ApiResponse({ type: PlantResponse })
+  getPlant(): Promise<PlantResponse> {
+    return this.surveyService.getPlant();
   }
 
 }

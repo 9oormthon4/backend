@@ -45,3 +45,8 @@ export class ScoreResponse {
     @ApiProperty({ type: EconomicCategory })
     economicCostBreakDown: EconomicCategory
 }
+
+export class PlantResponse {
+    @ApiProperty({ example: 10 })
+    totalPlantCount: number
+}

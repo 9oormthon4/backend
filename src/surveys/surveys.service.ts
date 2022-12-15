@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { ParticipantResponse, SubmissionInfoResponse, ScoreResponse } from './surveys.response'
+import { ParticipantResponse, SubmissionInfoResponse, ScoreResponse, PlantResponse } from './surveys.response'
 
 import { Surveys } from 'src/entities/Surveys'
 import { Responses } from 'src/entities/Responses'
@@ -140,6 +140,23 @@ export class SurveyService {
     }
 
     return comment
+  }
+
+  async plantTree(
+      userId: number
+  ): Promise<Surveys> {
+    return await this.surveyRepository.save({
+        userId: userId,
+        isPlanting: 1
+    })
+  }
+
+  async getPlant(): Promise<PlantResponse> {
+      return {
+        totalPlantCount: await this.surveyRepository.createQueryBuilder('surveys')
+            .where('surveys.isPlanting = 1')
+            .getCount()
+      }
   }
 
 
