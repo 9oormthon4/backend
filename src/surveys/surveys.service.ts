@@ -92,7 +92,8 @@ export class SurveyService {
     await this.surveyRepository.save({
         ...now,
         greenScore: greenScore,
-        economicCost: economicCost
+        economicCost: economicCost,
+        isPlanting: greenScore >= 70 ? 1 : 0
     })
 
     const rank = (await this.surveyRepository.createQueryBuilder('surveys')
