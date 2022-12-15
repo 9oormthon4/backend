@@ -92,7 +92,8 @@ export class SurveyService {
     })
 
     const rank = (await this.surveyRepository.createQueryBuilder('surveys')
-        .where('surveys.greenScore >= :greenScore && surveys.createdAt > :createdAt', { greenScore, createdAt: now.createdAt })
+        .where('surveys.greenScore > :greenScore', { greenScore })
+        .orWhere('surveys.greenScore = :greenScore && surveys.userId < :userId', { greenScore, userId: now.userId })
         .getCount()) + 1
 
     return {
