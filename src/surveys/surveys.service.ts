@@ -127,7 +127,7 @@ export class SurveyService {
         land: [5, 7],
         ocean: [6, 7]
     }
-    return Math.round((category[target].reduce((acc, cur) => acc + responses[cur].answerToQuestion, 0)) * 6 / 8)
+    return Math.round((category[target].reduce((acc, cur) => acc + responses[cur].answerToQuestion, 0)) * 5 / 8)
   }
 
   _commentarySelector(responses: Responses[], target: string): string {
