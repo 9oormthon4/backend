@@ -10,7 +10,7 @@ const Auth = createParamDecorator(
         try {
             const request = ctx.switchToHttp().getRequest();
             const { id, password, userid, usercode } = request.headers;
-            if(id == "jeju" && password == "pwd") {
+            if(id == process.env.authId && password == process.env.authPassword) {
                 return {
                     status: true
                 } as AdregamdyAuthResponse
