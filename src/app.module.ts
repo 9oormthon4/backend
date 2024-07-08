@@ -16,16 +16,16 @@ import { ResponseModule } from './responses/responses.module'
   imports: [
 
 
-    // dotenv 적용이 안됨...ㅠㅠ
+   
 
     TypeOrmModule.forRoot(
       {
         type: 'mysql',
-        host: '3.34.62.141',
-        username: 'root',
-        password: 'messi10goat',
-        port: 51588,
-        database: 'adregamdy',
+        host: process.env.host,
+        username: process.env.username,
+        password: process.env.password,
+        port: process.env.port,
+        database: process.env.database,
         entities: [
           Questions,
           Surveys,
